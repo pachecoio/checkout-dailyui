@@ -1,0 +1,26 @@
+:root {
+  --color-primary: #2D2F5A;
+  --color-primary-light: #3C3F72;
+  --color-highlight: #F3647B;
+
+  --grey: rgb(173, 173, 173);
+  --grey-light: #F3F0F1;
+  --grey-dark: rgb(139, 139, 139);
+}
+
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 10px;
+  font-family: Lato, sans-serif;
+}
+
+.icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}

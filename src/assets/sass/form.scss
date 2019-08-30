@@ -1,0 +1,14 @@
+.form {
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: flex-end;
+  }
+
+}

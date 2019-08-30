@@ -1,0 +1,23 @@
+.form {
+
+  &__group {
+    margin-bottom: 2rem;
+  }
+
+  &__label {
+    text-transform: uppercase;
+    color: var(--grey-dark);
+    margin-bottom: .5rem;
+    margin-left: .5rem;
+  }
+
+  &__input {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-size: 1.6rem;
+    outline: none;
+    border: none;
+    box-shadow: 0 3px 5px rgba(0,0,0,.2);
+  }
+}

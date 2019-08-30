@@ -1,0 +1,15 @@
+.payment {
+
+  background-color: var(--grey-light);
+
+  &__heading, .heading-3 {
+    color: var(--color-primary-light);
+    font-weight: 700;
+    margin: 2rem;
+  }
+
+  &__form {
+    padding: 2rem 4rem;
+  }  
+
+}
