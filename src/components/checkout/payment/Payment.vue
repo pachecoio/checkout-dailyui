@@ -1,6 +1,9 @@
 <template>
   <div class="checkout__card__content payment">
     <h3 class="heading-3 payment__heading">Payment</h3>
+    <div class="payment__cards">
+      <CardList />
+    </div>
     <form class="form payment__form">
       <FormInput
         label="Card Holder"
@@ -56,13 +59,15 @@ import FormInput from "./../../form/form-input/FormInput";
 import Button from "./../../buttons/Button";
 import FormDate from "./../../form/form-date/FormDate";
 import FormCheckbox from './../../form/form-checkbox/FormCheckbox';
+import CardList from './../card-list/CardList';
 import "./payment.scss";
 export default {
   components: {
     FormInput,
     FormDate,
     FormCheckbox,
-    Button
+    Button,
+    CardList,
   },
   data: function() {
     return {
