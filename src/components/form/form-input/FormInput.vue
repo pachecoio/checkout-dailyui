@@ -1,5 +1,5 @@
 <template>
-  <div class="form__group">
+  <div class="form__group" :class="classes">
     <label :for="name" class="form__label">{{label}}</label>
     <input
       :name="name"
@@ -8,7 +8,7 @@
       class="form__input"
       :placeholder="placeholder"
       v-model="value"
-      :maxlength="format === 'credit-card' && 19"
+      :maxlength="maxLength || (format === 'credit-card' && 19)"
       v-mask="mask || defaultMask"
     />
   </div>
@@ -34,10 +34,23 @@ export default {
       americanExpress: false,
       discovery: false,
       value: "",
-      defaultMask: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      defaultMask:
+        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     };
   },
-  props: ["initialValue", "name", "type", "placeholder", "pattern", "format", "label", "mask", "onChange"],
+  props: [
+    "initialValue",
+    "name",
+    "type",
+    "placeholder",
+    "pattern",
+    "format",
+    "label",
+    "mask",
+    "onChange",
+    "classes",
+    "maxLength"
+  ],
   methods: {
     validate: function(cc) {
       let valid = false;
@@ -69,7 +82,7 @@ export default {
       return cc;
     }
   },
-  created: function () {
+  created: function() {
     this.value = this.initialValue;
   },
   updated: function() {
@@ -78,11 +91,10 @@ export default {
         this.value = this.value.substring(0, this.value.length - 1);
       this.validate(this.value);
       if (this.isValid) {
-        console.log("cc valid");
         this.value = this.setMask(this.value);
       }
     }
-    this.onChange(this.value);
+    return this.onChange(this.value);
   }
 };
 </script>

@@ -25,6 +25,12 @@
     }
   }
 
+  &__groups {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   &__label {
     text-transform: uppercase;
     color: var(--grey-dark);

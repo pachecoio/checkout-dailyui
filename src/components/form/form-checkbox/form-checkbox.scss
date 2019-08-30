@@ -1,0 +1,45 @@
+.form {
+
+  &__group {
+
+    &--checkbox {
+      input {
+        display: none;
+      }
+
+      align-items: center;
+
+      .form__label {
+        order: 2;
+        margin-top: .5rem;
+        margin-left: 1rem;
+      }
+
+    }
+
+  }
+
+  &__checkbox {
+    cursor: pointer;
+    background-color: #fff;
+    box-shadow: 3px 3px 5px rgba(0,0,0,.2);
+    padding: .5rem;
+    border-radius: 7px;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__fade-enter-active, .fade-leave-active {
+      transition: opacity .5s;
+      transition: transform .2s;
+      transform: translateY(0) rotate(0);
+    }
+    &__fade-enter, .fade-leave-to /* .fade-leave-active em versões anteriores a 2.1.8 */ {
+      opacity: 0;
+      transform: translateY(-.5rem) rotate(-30deg);
+    }
+
+  }
+}
