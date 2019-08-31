@@ -30,9 +30,9 @@
         </div>
         <div class="card__number">
           <span v-for="item in 4" :key="item" :class="[
-            item === 4 && lastDigits ? 'has-number' : ''
+            item === 4 && (lastDigits && active === card.id) ? 'has-number' : ''
           ]">
-            {{item !== 4 ? '****' : lastDigits ? lastDigits : '****'}}
+            {{item !== 4 ? '****' : (lastDigits && active === card.id) ? lastDigits : '****'}}
           </span>
         </div>
         <div class="card__details">
@@ -77,19 +77,19 @@ export default {
       // active: this.selectedCard || 1,
       cards: [
         {
-          id: 1,
+          id: 0,
           name: "mastercard"
         },
         {
-          id: 2,
+          id: 1,
           name: "visa"
         },
         {
-          id: 3,
+          id: 2,
           name: "amex"
         },
         {
-          id: 4,
+          id: 3,
           name: "discover"
         }
       ]

@@ -5,12 +5,14 @@
     &--date {
       display: flex;
       flex-direction: row;
+      cursor: pointer;
 
       .form__input {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-right: 1rem;
+        position: relative;
 
         .icon {
           margin-left: .5rem;
@@ -37,4 +39,40 @@
     margin-bottom: .5rem;
     margin-left: .5rem;
   }
+
+  &__date {
+
+    &__list {
+      list-style: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      max-height: 15rem;
+      width: 100%;
+      background-color: #fff;
+      border-radius: .7rem;
+      overflow: scroll;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &-enter-active, &-leave-active {
+        transition: opacity .5s;
+        transition: transform .2s;
+        transform: translateY(0);
+      }
+      &-enter, &-leave-to /* .fade-leave-active em versões anteriores a 2.1.8 */ {
+        opacity: 0;
+        transform: translateY(-10%);
+      }
+
+    }
+
+    &__item {
+      padding: 1rem;
+      cursor: pointer;
+    }
+
+  }
+
 }

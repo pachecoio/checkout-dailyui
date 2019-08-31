@@ -6,10 +6,12 @@
       :id="name"
       :type="type || 'text'"
       class="form__input"
+      :class="error && 'form__input--error'"
       :placeholder="placeholder"
       v-model="value"
       :maxlength="maxLength || (format === 'credit-card' && 19)"
       v-mask="mask || defaultMask"
+      @focus="clearError"
     />
   </div>
 </template>
@@ -49,7 +51,9 @@ export default {
     "mask",
     "onChange",
     "classes",
-    "maxLength"
+    "maxLength",
+    "error",
+    "removeError"
   ],
   methods: {
     validate: function(cc) {
@@ -80,6 +84,9 @@ export default {
     },
     setMask: function(cc) {
       return cc;
+    },
+    clearError: function () {
+      this.removeError(this.name);
     }
   },
   created: function() {

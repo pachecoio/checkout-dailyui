@@ -8,14 +8,16 @@
         :active="selectedCard"
         :onChange="setCard"/>
     </div>
-    <form class="form payment__form">
+    <form class="form payment__form" @submit="handleSubmit">
       <FormInput
         label="Card Holder"
         name="name"
         :initialValue="name"
         type="text"
-        placeholder="Your name"
+        placeholder="Card holder name"
         :onChange="setName"
+        :error="errors.filter(i => i.field === 'name').length > 0"
+        :removeError="removeError"
       />
       <FormInput
         label="Card Number"
@@ -26,9 +28,14 @@
         format="credit-card"
         mask="####-####-####-####"
         :onChange="setCC"
+        :error="errors.filter(i => i.field === 'cc').length > 0"
+        :removeError="removeError"
       />
       <div class="form__groups">
-        <FormDate label="Expire date" />
+        <FormDate 
+          label="Expire date"
+          :onChange="setExpireDate"
+          :error="errors.filter(i => i.field === 'expireDate').length > 0" />
         <FormInput
           label="CVV"
           type="text"
@@ -40,11 +47,15 @@
           :initialValue="cvv"
           placeholder="123"
           :onChange="setCVV"
+          :error="errors.filter(i => i.field === 'cvv').length > 0"
+          :removeError="removeError"
         />
       </div>
       <FormCheckbox
         label="Save card information"
-        :initialValue="agree"/>
+        :initialValue="saveCard"
+        :onChange="setSaveCard"
+        :error="errors.filter(i => i.field === 'saveCard').length > 0"/>
       <div class="form__group form__buttons">
         <Button
           :value="'Purchase'"
@@ -78,10 +89,15 @@ export default {
       name: "",
       cc: "",
       cvv: "",
-      agree: false,
-      selectedCard: 1
+      expireDate: new Date(2019, 2),
+      saveCard: false,
+      selectedCard: 1,
+      errors: []
     };
   },
+  props: [
+    'items'
+  ],
   methods: {
     setName: function(value) {
       this.name = value;
@@ -93,8 +109,8 @@ export default {
     setCVV: function (value) {
       this.cvv = value;
     },
-    setAgree: function (value) {
-      this.agree = value;
+    setSaveCard: function (value) {
+      this.saveCard = value;
     },
     setCard: function (index) {
       this.selectedCard = index;
@@ -118,6 +134,61 @@ export default {
             break;
         }
       }
+    },
+    setExpireDate: function (date) {
+      this.expireDate = date;
+    },
+    removeError: function (name) {
+      this.errors = this.errors.filter(i => i.field !== name);
+    },
+    handleSubmit: function (e) {
+      e.preventDefault();
+      this.errors = [];
+      let data = {
+        name: this.name,
+        cc: this.cc,
+        cvv: this.cvv,
+        expireDate: this.expireDate,
+        saveCard: this.saveCard,
+        products: this.items
+      }
+      if(!this.validateForm(data)) {
+        // FORM INVALID
+        console.log('errors', this.errors);
+        this.errors.map(i => {
+          console.log(i);
+        })
+        return;
+      }
+      // FORM VALID, PROCEED WITH REQUEST
+      console.log('submit form', data)
+      return;
+    },
+    validateForm: function (data) {
+      if(!data.name || data.name === "") this.errors.push({
+        field: 'name',
+        message: "Field name cannot be empty"
+      })
+      if(!data.cc || data.cc === "") {
+        this.errors.push({
+          field: 'cc',
+          message: "Field card number cannot be empty"
+        })
+      } else if(data.cc.length < 19) {
+        this.errors.push({
+          field: 'cc',
+          message: "Field card number invalid"
+        })
+      }
+      if(!data.cvv || data.cvv === "" || data.cvv.length < 3) this.errors.push({
+        field: 'cvv',
+        message: "Field CVV invalid"
+      })
+      if(!data.expireDate) this.errors.push({
+        field: 'expireDate',
+        message: "Field expire date invalid"
+      })
+      return this.errors.length === 0;
     }
   },
   updated: function() {

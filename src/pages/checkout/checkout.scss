@@ -1,3 +1,5 @@
+@import "./../../assets/sass/mixin";
+
 .checkout {
 
   min-height: 100vh;
@@ -7,8 +9,16 @@
     background-color: var(--color-highlight);
     display: flex;
     align-items: center;
-    padding: 0 6rem;
+    padding: 0 1rem;
     min-height: 100vh;
+
+    @include mq(sm) {
+      padding: 0 2rem;
+    }
+
+    @include mq(md) {
+      padding: 0 6rem;
+    }
 
   }
 
@@ -20,11 +30,15 @@
     margin: 2rem auto;
     border-radius: 2rem;
     display: grid;
-    grid-template-columns: 1fr 45%;
+    grid-template-columns: 1fr;
     border-radius: 2rem;
     overflow: hidden;
     box-shadow: -20px 20px 10px rgba($color: #000000, $alpha: .25);
     z-index: 2;
+
+    @include mq(sm) {
+      grid-template-columns: 1fr 45%;
+    }
 
     &__content {
       min-height: 30rem;

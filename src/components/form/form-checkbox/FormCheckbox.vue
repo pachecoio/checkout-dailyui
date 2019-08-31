@@ -1,8 +1,15 @@
 <template>
   <div class="form__group form__group--checkbox" :class="classes">
     <label class="form__label">{{label}}</label>
-    <input :name="name" :id="name" type="checkbox" v-model="selected" />
-    <div class="form__checkbox" @click="selected = !selected">
+    <input :name="name" 
+      :id="name" type="checkbox" 
+      v-model="selected"
+      :ref="name" />
+    <div class="form__checkbox" 
+      @click="select"
+      :class="[
+        error && 'form__checkbox--error'
+      ]">
       <transition name="form__checkbox__fade">
         <svg
           v-if="selected"
@@ -27,12 +34,18 @@ export default {
       selected: false,
     };
   },
-  props: ["classes", "label", "name", "initialValue"],
+  props: ["classes", "label", "name", "initialValue", "onChange", "error"],
   created: function () {
     this.selected = this.initialValue;
   },
   updated: function () {
     // console.log('changed value', this.selected);
+    this.onChange(this.selected);
+  },
+  methods: {
+    select: function () {
+      this.selected = !this.selected;
+    }
   }
 };
 </script>
