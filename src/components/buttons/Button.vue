@@ -3,7 +3,7 @@
     :type="type || 'button'" 
     class="btn"
     :class="classes"
-    @click="action" >
+    :@click="action" >
     {{value}}
   </button>
 </template>

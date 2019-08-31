@@ -1,8 +1,13 @@
+@import "./../../../assets/sass/mixin";
 .order {
   background-color: var(--color-primary-light);
   height: 100%;
   transition: all .5s;
   position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   &__heading {
     color: var(--grey-light);
@@ -22,13 +27,17 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+    margin: 0 1rem;
   }
 
   &__name {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: var(--grey);
     letter-spacing: 1px;
     transition: all .5s;
+    @include mq(md) {
+      font-size: 1.6rem;
+    }
   }
 
   &__categories {
@@ -82,7 +91,7 @@
   }
 
   &__total {
-    margin: 1px 2rem 1rem 2rem;
+    margin: 3px 2rem 1rem 2rem;
     padding: 1rem 0;
     display: flex;
     align-items: flex-end;

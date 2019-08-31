@@ -3,6 +3,8 @@ import App from './App.vue'
 
 import VueScrollTo from 'vue-scrollto';
 import VueMask from 'v-mask'
+import VueSimpleSVG from 'vue-simple-svg'
+Vue.use(VueSimpleSVG)
 Vue.use(VueMask);
 
 Vue.config.productionTip = false
