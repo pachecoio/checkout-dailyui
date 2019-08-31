@@ -2,7 +2,9 @@
   <div class="checkout__card__content payment">
     <h3 class="heading-3 payment__heading">Payment</h3>
     <div class="payment__cards">
-      <CardList />
+      <CardList 
+        :name="name"
+        :lastDigits="cc.length > 18 && cc.substring(cc.length, cc.length - 4)"/>
     </div>
     <form class="form payment__form">
       <FormInput
@@ -83,6 +85,7 @@ export default {
     },
     setCC: function(value) {
       this.cc = value;
+      console.log('cc', value);
     },
     setCVV: function (value) {
       this.cvv = value;
