@@ -60,25 +60,25 @@ export default {
         },
         {
           id: 4,
-          name: "Adidas Arkyn",
-          image: require(`@/assets/images/adidas3.png`),
+          name: "Adidas Energy Cloud V",
+          image: require(`@/assets/images/adidas.png`),
           categories: [
-            "Women Originals",
-            "Semi Solar Yellow",
+            "Women Essentials",
+            "Tech Ink",
             "Size 37"
           ],
-          price: 129.95
+          price: 59.95
         },
         {
           id: 5,
-          name: "Adidas Arkyn",
-          image: require(`@/assets/images/adidas3.png`),
+          name: "Adidas Vs Advantage",
+          image: require(`@/assets/images/adidas2.png`),
           categories: [
-            "Women Originals",
-            "Semi Solar Yellow",
+            "Women Essentials",
+            "Ftwr White",
             "Size 37"
           ],
-          price: 129.95
+          price: 49.95
         },
         {
           id: 6,
@@ -90,7 +90,7 @@ export default {
             "Size 37"
           ],
           price: 129.95
-        }
+        },
       ]
     };
   }

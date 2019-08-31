@@ -12,6 +12,35 @@
     padding: 0 1rem;
     min-height: 100vh;
 
+    &:after {
+      content: "";
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      background-color: var(--color-primary);
+
+      @include mq(xs) {
+        position: absolute;
+        height: 75%;
+        width: 100%;
+        top: 70%;
+      }
+
+      @include mq(sm) {
+        width: 45%;
+      }
+
+      @include mq(md) {
+        width: 45.5%;
+      }
+
+      @include mq(lg) {
+        width: 46%;
+      }
+
+    }
+
     @include mq(sm) {
       padding: 0 2rem;
     }

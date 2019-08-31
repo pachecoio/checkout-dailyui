@@ -155,9 +155,6 @@ export default {
       if(!this.validateForm(data)) {
         // FORM INVALID
         console.log('errors', this.errors);
-        this.errors.map(i => {
-          console.log(i);
-        })
         return;
       }
       // FORM VALID, PROCEED WITH REQUEST
