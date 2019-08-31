@@ -4,7 +4,9 @@
     <div class="payment__cards">
       <CardList 
         :name="name"
-        :lastDigits="cc.length > 18 && cc.substring(cc.length, cc.length - 4)"/>
+        :lastDigits="cc.length > 18 && cc.substring(cc.length, cc.length - 4)"
+        :active="selectedCard"
+        :onChange="setCard"/>
     </div>
     <form class="form payment__form">
       <FormInput
@@ -77,6 +79,7 @@ export default {
       cc: "",
       cvv: "",
       agree: false,
+      selectedCard: 1
     };
   },
   methods: {
@@ -85,21 +88,40 @@ export default {
     },
     setCC: function(value) {
       this.cc = value;
-      console.log('cc', value);
+      // console.log('cc', value);
     },
     setCVV: function (value) {
       this.cvv = value;
     },
     setAgree: function (value) {
       this.agree = value;
+    },
+    setCard: function (index) {
+      this.selectedCard = index;
+    },
+    setBrand: function () {
+      // console.log('set brand', this.cc.substring(0, 1));
+      if(this.cc && this.cc.length > 0) {
+        switch (this.cc.substring(0, 1)) {
+          case "3":
+            this.selectedCard = 2;
+            break;
+          case "4":
+          default:
+            this.selectedCard = 1;
+            break;
+          case "5":
+            this.selectedCard = 0;
+            break;
+          case "6":
+            this.selectedCard = 3;
+            break;
+        }
+      }
     }
   },
   updated: function() {
-    console.log('changed');
-    console.log('name', this.name);
-    console.log('cc', this.cc);
-    console.log('cvv', this.cvv);
-    console.log('agree', this.agree);
+    this.setBrand();
   }
 };
 </script>

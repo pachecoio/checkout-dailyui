@@ -32,7 +32,7 @@ export default {
     this.selected = this.initialValue;
   },
   updated: function () {
-    console.log('changed value', this.selected);
+    // console.log('changed value', this.selected);
   }
 };
 </script>

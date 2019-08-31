@@ -35,7 +35,7 @@ export default {
       discovery: false,
       value: "",
       defaultMask:
-        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        "XXXXXXXXXXXXXXXXXXXXX"
     };
   },
   props: [
