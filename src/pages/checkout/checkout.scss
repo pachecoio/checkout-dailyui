@@ -11,32 +11,35 @@
     align-items: center;
     padding: 0 1rem;
     min-height: 100vh;
+    position: relative;
 
     &:after {
       content: "";
       position: fixed;
-      top: 0;
       right: 0;
       height: 100%;
       background-color: var(--color-primary);
 
       @include mq(xs) {
         position: absolute;
-        height: 75%;
+        height: 51.5%;
         width: 100%;
-        top: 70%;
+        bottom: 0;
       }
 
       @include mq(sm) {
         width: 45%;
+        top: 0;
       }
 
       @include mq(md) {
         width: 45.5%;
+        top: 0;
       }
 
       @include mq(lg) {
         width: 46%;
+        top: 0;
       }
 
     }
